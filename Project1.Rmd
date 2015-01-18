@@ -75,7 +75,7 @@ Note that there are a number of days/intervals where there are missing values (c
 ```{r}
 require(plyr)
 count <- count(is.na(df$steps))
-# Lets use the average interval values calculated before to replace NAs.
+# Strategy: Lets use the average interval values calculated before to replace NAs.
 df.clean <- df
 for (i in which(is.na(df$steps), TRUE)){
         df$steps[i] <- df.interval$x[df$interval[i] == df.interval$Group.1]
@@ -130,6 +130,7 @@ g <- g + scale_x_continuous(limits = c(0, 2400))
 g <- g + scale_y_continuous(limits = c(0, 200))
 g <- g + xlab("Interval") + ylab("Number of Steps") + ggtitle("Weekday") 
 # g
+
 
 grid.arrange(f , g, ncol=1)
 ```
